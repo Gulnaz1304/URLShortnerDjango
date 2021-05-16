@@ -121,6 +121,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+SHORTCODE_MAX = 15
+SHORTCODE_MIN = 6
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
