@@ -21,7 +21,8 @@ from shortener.views import shortened_redirect_view, ShortenedCBView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('view-1/', shortened_redirect_view),
-    path('view-2/', ShortenedCBView.as_view())
+    path('<shortcode>', shortened_redirect_view),  # should be last in the list
+    path('view2/', ShortenedCBView.as_view())
+
 
 ]
