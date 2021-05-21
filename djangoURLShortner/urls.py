@@ -15,14 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from shortener.views import shortened_redirect_view, ShortenedCBView
+from shortener.views import shortened_redirect_view, ShortenedCBView, HomeView
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('<shortcode>', shortened_redirect_view),  # should be last in the list
-    path('view2/', ShortenedCBView.as_view())
+    path('', HomeView.as_view()),
+    # path('<shortcode>', shortened_redirect_view),  # should be last in the list
+    path('<shortcode>', ShortenedCBView.as_view())  # in the list
 
 
 ]
