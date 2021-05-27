@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shortener',
-    'django_hosts'
+    'django_hosts',
+    'analytics'
 ]
 
 MIDDLEWARE = [
@@ -58,6 +59,7 @@ ROOT_URLCONF = 'djangoURLShortner.urls'
 ROOT_HOSTCONF = 'djangoURLShortner.hosts'
 DEFAULT_HOST = 'www'
 DEFAULT_REDIRECT_URL = 'http://www.urlshortener.com'
+PARENT_HOST = "urlshortener.com"
 
 TEMPLATES = [
     {

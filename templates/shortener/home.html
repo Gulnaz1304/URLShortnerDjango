@@ -5,9 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-<h1>hi there</h1>
+<h1>{{ title }}</h1>
     <form method="post" action="."> {% csrf_token %}
-        <input name="url" type="text" placeholder="input your url for shortening"/>
+        {{ form.as_p }}
         <input type="submit" value="shorten">
     </form>
 </body>
