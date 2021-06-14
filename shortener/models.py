@@ -15,16 +15,6 @@ class ShortenedURLManager(models.Manager):
         qs = qs_main.filter(active=True)
         return qs
 
-    def refresh_shortcodes(self):
-        qs = ShortenedURL.objects.filter()
-        new_codes = 0
-        for q in qs:
-            q.shortcode = create_shortcode(q)
-            print(q.shortcode)
-            q.save()
-            new_codes += 1
-        return "New codes made:{i}".format(i=new_codes)
-
 
 class ShortenedURL(models.Model):
     url = models.CharField(max_length=200, validators=[validate_url, validate_dot_com])
@@ -36,7 +26,10 @@ class ShortenedURL(models.Model):
 
     def save(self, *args, **kwargs):
         if self.shortcode is None or self.shortcode == "":
-            self.shortcode = create_shortcode(self)
+            self.shortcode = hex(hash(self.id))[2:]
+
+        if not "http" in self.url:
+            self.url = "http//" + self.url
         super(ShortenedURL, self).save(*args, **kwargs)
 
     def __str__(self):

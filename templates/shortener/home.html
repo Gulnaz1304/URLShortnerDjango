@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row"></div>
         <div class='text-center' >
-            <h1>{{ title }}</h1>
+            <h1 style="color: white">{{ title }}</h1>
             <div class="col-sm-offset-4-text-center ">
                 <form method="post" action="."> {% csrf_token %}
                         {{ form.as_p }}

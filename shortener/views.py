@@ -6,7 +6,6 @@ from analytics.models import ClickEvent
 from .forms import SubmitUrlForm
 
 
-
 class HomeView(View):
     def get(self, request, *args, **kwargs):
         the_form = SubmitUrlForm()
@@ -27,7 +26,7 @@ class HomeView(View):
             new_url = form.cleaned_data.get("url")
             obj, created = ShortenedURL.objects.get_or_create(url=new_url)
             context = {
-                "object" : obj,
+                "object": obj,
                 "created": created
 
             }
@@ -37,13 +36,6 @@ class HomeView(View):
                 template = "shortener/already-exists.html"
 
         return render(request, template, context)
-
-
-def shortened_redirect_view(request, shortcode=None, *args, **kwargs):  # function based view
-
-    obj = get_object_or_404(ShortenedURL, shortcode=shortcode)
-    return HttpResponseRedirect(obj.url)
-# Create your views here.
 
 
 class URLRedirectView(View):   # class based view

@@ -21,3 +21,8 @@ class SubmitUrlForm(forms.Form):
     #         raise forms.ValidationError("Invalid URL for this field")
     #     return url
     #
+    # def clean_url(self):
+    #     url = self.cleaned_data['url']
+    #     if "http" in url:
+    #         return url
+    #     return "http://"+ url
